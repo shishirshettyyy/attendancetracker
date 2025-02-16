@@ -1,196 +1,110 @@
 /* FaceRecognition.module.css */
 
-/* Container */
+/* Animated Background */
+@keyframes backgroundAnimation {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
-  width: 100%;
-  max-width: 800px;
-  margin: auto;
-}
-
-/* Heading */
-/* Heading */
-.title {
-  font-size: 26px;
-  font-weight: bold;
-  /* color: #fff;  */
-  margin-bottom: 20px;
-  text-align: center;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Adds a subtle glow effect */
-}
-
-
-/* Webcam View */
-.videoWrapper {
-  width: 100%;
-  max-width: 640px;
-  display: flex;
   justify-content: center;
-  margin-bottom: 20px;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #1e3c72, #2a5298, #3c1053, #ad5389);
+  background-size: 400% 400%;
+  animation: backgroundAnimation 15s infinite alternate;
+  color: white;
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.videoWrapper {
+  width: 400px;
+  height: 300px;
+  border: 4px solid white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.2);
+  margin-bottom: 1rem;
 }
 
 .video {
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   width: 100%;
-  height: auto;
-  border: 3px solid #4CAF50;
+  height: 100%;
 }
 
-/* Buttons */
 .button {
-  padding: 12px 24px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  background: linear-gradient(135deg, #4CAF50, #388E3C);
-  color: white;
+  background: #ff7eb3;
   border: none;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: bold;
   border-radius: 8px;
-  margin: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  transition: transform 0.3s, background 0.3s;
+  margin: 0.5rem;
 }
 
 .button:hover {
-  background: linear-gradient(135deg, #45a049, #2e7d32);
+  background: #ff477e;
   transform: scale(1.05);
 }
 
-
-
-/* Error Message */
 .errorMessage {
-  background-color: #f8d7da;
-  color: #721c24;
-  padding: 15px;
-  border-radius: 8px;
-  width: 100%;
-  max-width: 400px;
-  margin-bottom: 15px;
-  text-align: center;
+  color: #ff4b5c;
   font-weight: bold;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 1rem;
 }
 
-/* Prediction Result */
 .resultWrapper {
-  text-align: center;
-  background: linear-gradient(135deg, #ff4444, #cc0000);
-  color: white;
-  padding: 15px;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 1rem;
   border-radius: 10px;
-  width: 100%;
-  max-width: 400px;
-  margin-bottom: 15px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  animation: fadeIn 0.5s ease-in-out;
+  margin: 1rem;
+  backdrop-filter: blur(10px);
 }
 
-.resultWrapper h2 {
-  margin-bottom: 10px;
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.resultWrapper p {
-  font-size: 18px;
-  font-weight: bold;
-  word-wrap: break-word;
-}
-
-/* Attendance List */
 .attendanceWrapper {
-  text-align: center;
-  background: linear-gradient(135deg, #007AFF, #005BBB);
-  color: white;
-  padding: 15px;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 1rem;
   border-radius: 10px;
-  width: 100%;
-  max-width: 400px;
-  margin-bottom: 15px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.attendanceWrapper h2 {
-  margin-bottom: 10px;
-  font-size: 20px;
-  font-weight: bold;
+  width: 80%;
+  max-width: 600px;
+  margin-top: 1rem;
+  backdrop-filter: blur(10px);
 }
 
 .attendanceList {
-  list-style-type: none;
+  list-style: none;
   padding: 0;
-  margin: 0;
 }
 
 .attendanceItem {
-  font-size: 16px;
-  font-weight: bold;
   padding: 8px;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 5px;
-  margin-bottom: 5px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease-in-out;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.attendanceItem:hover {
-  transform: scale(1.05);
-}
-
-/* Export Buttons */
-.exportButtons {
+.buttonGroup {
   display: flex;
   gap: 10px;
-  justify-content: center;
-  margin-top: 15px;
+  margin-top: 1rem;
 }
-
-.exportButton {
-  padding: 10px 20px;
-  font-size: 14px;
-  font-weight: bold;
-  background: linear-gradient(135deg, #ff9800, #e65100);
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-}
-
-.exportButton:hover {
-  background: linear-gradient(135deg, #f57c00, #bf360c);
-  transform: scale(1.05);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .title {
-    font-size: 22px;
-  }
-  
-  .button {
-    font-size: 14px;
-    padding: 10px 20px;
-  }
-
-  .resultWrapper, .attendanceWrapper, .errorMessage {
-    max-width: 90%;
-  }
-}
-
-/* Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-} 
